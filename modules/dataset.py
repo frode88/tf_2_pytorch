@@ -12,25 +12,6 @@ import numpy as np
 
 class phosc_dataset(Dataset):
     def __init__(self, csvfile, root_dir, transform=None, calc_phosc=True):
-        self.root_dir = root_dir
-        self.transform = transform
-        self.df_all = pd.read_csv(csvfile, usecols=["Image", "Word"])
-        self.df_all["phos"] = self.df_all['Word'].apply(generate_phos_vector)
-        self.df_all["phoc"] = self.df_all['Word'].apply(generate_phoc_vector)
-
-        # Saving phos in a array
-        phos_array = []
-        for i in range(len(self.df_all["phos"])):
-            phos_array.append(i)
-
-        # Saving phoc in a array
-        phoc_array = []
-        for i in range(len(self.df_all["phoc"])):
-            phoc_array.append(i)
-
-        # Concatenate phos_array and Saving phoc with numpy
-        if calc_phosc is True:
-            self.df_all['phosc'] = np.concatenate((phos_array, phoc_array))
 
         # Fill in your code here. You will populate self.df_all
         # it should be pandas df with ["Image", "Word", "phos", "phoc", "phosc"] columns
@@ -38,6 +19,29 @@ class phosc_dataset(Dataset):
         # phosc features vector can be created combining generate_phos_vector, generate_phoc_vector
         # Note: How to use phoc, phoc or phosc of the df in a batch is up to you.
         # in the __getitem__ below the phosc vector is used in the batches.
+        self.root_dir = root_dir
+        self.transform = transform
+        # reading the cvs file and getting image and work
+        self.df_all = pd.read_csv(csvfile, usecols=["Image", "Word"])
+
+        self.df_all["phos"] = self.df_all['Word'].apply(generate_phos_vector)
+        self.df_all["phoc"] = self.df_all['Word'].apply(generate_phoc_vector)
+
+        # Saving phos in a array
+        # 165 the size
+        phos_array = []
+        for i in range(len(self.df_all["phos"])):
+            phos_array.append(i)
+
+        # Saving phoc in a array
+        # 604 sinze
+        phoc_array = []
+        for i in range(len(self.df_all["phoc"])):
+            phoc_array.append(i)
+
+        # Concatenate phos_array and Saving phoc with numpy
+        if calc_phosc is True:
+            self.df_all['phosc'] = np.concatenate((phos_array, phoc_array))
 
     def __getitem__(self, index):
         img_path = os.path.join(self.root_dir, self.df_all.iloc[index, 0])

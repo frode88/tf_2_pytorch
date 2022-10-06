@@ -14,7 +14,7 @@ __all__ = [
 class PHOSCnet(nn.Module):
     def __init__(self):
         super().__init__()
-        # Feature learning
+        # Feature learning/Convolution Layer
         self.conv = nn.Sequential(
             #Convolution + relu
             # conv2d input, output, kernel , stripe and padding
