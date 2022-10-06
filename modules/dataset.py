@@ -41,6 +41,7 @@ class phosc_dataset(Dataset):
 
         # Concatenate phos_array and Saving phoc with numpy
         if calc_phosc is True:
+            self.df_all['phosc'] = ''
             self.df_all['phosc'] = np.concatenate((phos_array, phoc_array))
 
     def __getitem__(self, index):
