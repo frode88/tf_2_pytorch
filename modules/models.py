@@ -88,6 +88,8 @@ class PHOSCnet(nn.Module):
         )
 
         self.phoc = nn.Sequential(
+            # in_features – size of each input sample
+            # out_features – size of each output sample
             nn.Linear(4096, 4096),
             nn.ReLU(),
             nn.Dropout(0.5),
