@@ -38,9 +38,6 @@ class phosc_dataset(Dataset):
         # Saving phoc in a array
         # 604 sinze
         #phoc_array = np.array([])
-        #for i in range(len(self.df_all["phoc"])):
-            #np.append(phoc_array, i)
-            #self.df_all['phosc'][i] = np.concatenate((self.df_all["phos"][i], self.df_all["phoc"][i]))
 
         # Concatenate phos_array and Saving phoc with numpy
         if calc_phosc is True:
