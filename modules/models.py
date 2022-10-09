@@ -21,10 +21,13 @@ class PHOSCnet(nn.Module):
 
             # Stride of the convolving kernel
             # padding is used to control the amount of padding applied to the input
-            nn.Conv2d(3, 64, kernel_size =(3, 3), stride = 1, padding='same'),
+
+            #defualt strides on keras are strides=(1, 1) -
+            #defualt stride pytorch (int or tuple, optional) – Stride of the convolution. Default: 1  - then no need to add stride
+            nn.Conv2d(3, 64, kernel_size =(3, 3), padding='same'),
             nn.ReLU(),
             #Convolution + relu
-            nn.Conv2d(64, 64, kernel_size =(3, 3), stride=1, padding='same'),
+            nn.Conv2d(64, 64, kernel_size =(3, 3), padding='same'),
             nn.ReLU(),
             # Pooling - Max Pooling
             # Max pooling is a pooling operation that selects the maximum\
@@ -34,40 +37,40 @@ class PHOSCnet(nn.Module):
             nn.MaxPool2d(2, stride=2),
 
             #Convolution + relu
-            nn.Conv2d(64, 128, kernel_size =(3, 3), stride=1, padding='same'),
+            nn.Conv2d(64, 128, kernel_size =(3, 3), padding='same'),
             nn.ReLU(),
             #Convolution + relu
-            nn.Conv2d(128, 128, kernel_size =(3, 3), stride=1, padding='same'),
+            nn.Conv2d(128, 128, kernel_size =(3, 3), padding='same'),
             nn.ReLU(),
             # Pooling
             nn.MaxPool2d(2, stride=2),
 
             #Convolution + relu
-            nn.Conv2d(128, 256, kernel_size =(3, 3), stride=1, padding='same'),
+            nn.Conv2d(128, 256, kernel_size =(3, 3), padding='same'),
             nn.ReLU(),
             #Convolution + relu
-            nn.Conv2d(256, 256, kernel_size =(3, 3), stride=1, padding='same'),
+            nn.Conv2d(256, 256, kernel_size =(3, 3), padding='same'),
             nn.ReLU(),
             #Convolution + relu
-            nn.Conv2d(256, 256, kernel_size =(3, 3), stride=1, padding='same'),
+            nn.Conv2d(256, 256, kernel_size =(3, 3), padding='same'),
             nn.ReLU(),
             #Convolution + relu
-            nn.Conv2d(256, 256, kernel_size =(3, 3), stride=1, padding='same'),
+            nn.Conv2d(256, 256, kernel_size =(3, 3), padding='same'),
             nn.ReLU(),
             #Convolution + relu
-            nn.Conv2d(256, 256, kernel_size =(3, 3), stride=1, padding='same'),
+            nn.Conv2d(256, 256, kernel_size =(3, 3), padding='same'),
             nn.ReLU(),
             #Convolution + relu
-            nn.Conv2d(256, 256, kernel_size =(3, 3), stride=1, padding='same'),
+            nn.Conv2d(256, 256, kernel_size =(3, 3), padding='same'),
             nn.ReLU(),
             #Convolution + relu
-            nn.Conv2d(256, 512, kernel_size =(3, 3), stride=1, padding='same'),
+            nn.Conv2d(256, 512, kernel_size =(3, 3), padding='same'),
             nn.ReLU(),
             #Convolution + relu
-            nn.Conv2d(512, 512, kernel_size =(3, 3), stride=1, padding='same'),
+            nn.Conv2d(512, 512, kernel_size =(3, 3), padding='same'),
             nn.ReLU(),
             #Convolution + relu
-            nn.Conv2d(512, 512, kernel_size=(3, 3), stride=1, padding='same'),
+            nn.Conv2d(512, 512, kernel_size=(3, 3), padding='same'),
             nn.ReLU(),
 
         )
