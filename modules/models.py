@@ -69,7 +69,6 @@ class PHOSCnet(nn.Module):
             #Convolution + relu
             nn.Conv2d(512, 512, (3,3), stride=1, padding='same'),
             nn.ReLU(),
-            nn.Flatten()
 
         )
 
