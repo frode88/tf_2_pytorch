@@ -72,7 +72,7 @@ class PHOSCnet(nn.Module):
 
         )
 
-        self.temporal_pool = TemporalPyramidPooling([1, 2, 4])
+        self.temporal_pool = TemporalPyramidPooling([1, 2, 5])
 
         self.phos = nn.Sequential(
             # Linear equl to Dense layer
