@@ -96,7 +96,7 @@ class PHOSCnet(nn.Module):
             nn.Linear(4096, 4096),
             nn.ReLU(),
             nn.Dropout(0.5),
-            nn.Sigmoid(4096, 604),
+            nn.Sigmoid(4096, 604)
         )
 
     def forward(self, x: torch.Tensor) -> dict:
