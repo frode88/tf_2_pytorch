@@ -26,26 +26,31 @@ class phosc_dataset(Dataset):
 
         self.df_all["phos"] = self.df_all['Word'].apply(generate_phos_vector)
         self.df_all["phoc"] = self.df_all['Word'].apply(generate_phoc_vector)
+        length_of_phos = len(self.df_all["phos"])
 
         # Saving phos in a array
         # 165 the size
-        phos_array = np.array([])
-        for i in range(len(self.df_all["phos"])):
-            np.append(phos_array, i)
+        #phos_array = np.array([])
+        #for i in range(len(self.df_all["phos"])):
+            #np.append(phos_array, i)
 
 
         # Saving phoc in a array
         # 604 sinze
-        phoc_array = np.array([])
-        for i in range(len(self.df_all["phoc"])):
-            np.append(phoc_array, i)
+        #phoc_array = np.array([])
+        #for i in range(len(self.df_all["phoc"])):
+            #np.append(phoc_array, i)
+            #self.df_all['phosc'][i] = np.concatenate((self.df_all["phos"][i], self.df_all["phoc"][i]))
 
         # Concatenate phos_array and Saving phoc with numpy
         if calc_phosc is True:
 
             self.df_all['phosc'] = ''
 
-            self.df_all['phosc'] = np.concatenate((phos_array, phoc_array))
+            for i in range(length_of_phos):
+                self.df_all['phosc'][i] = np.concatenate((self.df_all["phos"][i], self.df_all["phoc"][i]))
+
+            #self.df_all['phosc'] = np.concatenate((phos_array, phoc_array))
 
     def __getitem__(self, index):
         img_path = os.path.join(self.root_dir, self.df_all.iloc[index, 0])
