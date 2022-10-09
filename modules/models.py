@@ -69,6 +69,7 @@ class PHOSCnet(nn.Module):
             #Convolution + relu
             nn.Conv2d(512, 512, kernel_size =(3, 3), stride=1, padding='same'),
             nn.ReLU(),
+            
 
         )
 
@@ -96,7 +97,6 @@ class PHOSCnet(nn.Module):
             nn.ReLU(),
             nn.Dropout(0.5),
             nn.Sigmoid(4096, 604),
-            nn.ReLU()
         )
 
     def forward(self, x: torch.Tensor) -> dict:
