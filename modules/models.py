@@ -31,7 +31,7 @@ class PHOSCnet(nn.Module):
             # element from the region of the feature map covered by the filter
             # This will help avoid overfiting
             # kernal size 2 and stride 2
-            nn.MaxPool2d(2, 2),
+            nn.MaxPool2d(2, 2, stride=2),
 
             #Convolution + relu
             nn.Conv2d(64, 128, kernel_size =(3, 3), stride=1, padding='same'),
@@ -40,7 +40,7 @@ class PHOSCnet(nn.Module):
             nn.Conv2d(128, 128, kernel_size =(3, 3), stride=1, padding='same'),
             nn.ReLU(),
             # Pooling
-            nn.MaxPool2d(2, 2),
+            nn.MaxPool2d(2, 2, stride=2),
 
             #Convolution + relu
             nn.Conv2d(128, 256, kernel_size =(3, 3), stride=1, padding='same'),
@@ -67,9 +67,8 @@ class PHOSCnet(nn.Module):
             nn.Conv2d(512, 512, kernel_size =(3, 3), stride=1, padding='same'),
             nn.ReLU(),
             #Convolution + relu
-            nn.Conv2d(512, 512, kernel_size =(3, 3), stride=1, padding='same'),
+            nn.Conv2d(512, 512, kernel_size=(3, 3), stride=1, padding='same'),
             nn.ReLU(),
-            nn.Flatten(),
 
         )
 
