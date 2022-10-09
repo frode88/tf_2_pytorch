@@ -29,19 +29,21 @@ class phosc_dataset(Dataset):
 
         # Saving phos in a array
         # 165 the size
-        phos_array = []
+        phos_array = np.array([])
         for i in range(len(self.df_all["phos"])):
             phos_array.append(i)
 
         # Saving phoc in a array
         # 604 sinze
-        phoc_array = []
+        phoc_array = np.array([])
         for i in range(len(self.df_all["phoc"])):
             phoc_array.append(i)
 
         # Concatenate phos_array and Saving phoc with numpy
         if calc_phosc is True:
+
             self.df_all['phosc'] = ''
+
             self.df_all['phosc'] = np.concatenate((phos_array, phoc_array))
 
     def __getitem__(self, index):
